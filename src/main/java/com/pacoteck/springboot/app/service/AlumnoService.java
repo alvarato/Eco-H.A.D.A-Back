@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.pacoteck.springboot.app.entity.Alumno;
 import com.pacoteck.springboot.app.entity.Insignea;
+import com.pacoteck.springboot.app.entity.Profesor;
 import com.pacoteck.springboot.app.entity.Tarea;
 import com.pacoteck.springboot.app.repository.AlumnoRepository;
 import com.pacoteck.springboot.app.repository.InsigneaRepository;
@@ -97,6 +98,18 @@ public class AlumnoService {
 			ar.save(alumnoAux);
 		
 		
+	}
+	
+	
+	public Long validar(String email, String password) {
+		List<Alumno> alumnos = ar.findAll();
+		for (Alumno alumno : alumnos) {
+			if(email.equals(alumno.getUserName()) && password.equals(alumno.getPassword())) {
+				return alumno.getId();
+			}
+		}
+		return (long) 0;
+		 
 	}
 	
 }

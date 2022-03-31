@@ -75,4 +75,19 @@ public class AlumnoController {
 		
 	}
 	
+	
+	@PostMapping(value = "/iniciarSesion")
+	public Long iniciarSesion(@RequestParam String email, @RequestParam String password) {
+		Long id = as.validar(email, password);
+		if( id > 0) {
+			return id;
+			
+		}else {
+			return (long) 0;
+			 
+		}
+		
+	}
+	
+	
 }
