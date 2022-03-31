@@ -1,9 +1,12 @@
 package com.pacoteck.springboot.app.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,7 +28,13 @@ public class Alumno {
 	private String password;
 	
 	private int xp;
-
+	
+	@OneToMany
+	private List<Tarea> tareas;
+	
+	@OneToMany
+	private List<Insignea> insigneas;
+	
 	public Long getId() {
 		return id;
 	}
@@ -80,6 +89,22 @@ public class Alumno {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public List<Tarea> getTareas() {
+		return tareas;
+	}
+
+	public void setTareas(List<Tarea> tareas) {
+		this.tareas = tareas;
+	}
+
+	public List<Insignea> getInsigneas() {
+		return insigneas;
+	}
+
+	public void setInsigneas(List<Insignea> insigneas) {
+		this.insigneas = insigneas;
 	}
 	
 	

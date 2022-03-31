@@ -1,13 +1,13 @@
 package com.pacoteck.springboot.app.entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+
 
 @Entity
-@Table(name="insignea")
 public class Insignea {
 	
 	@Id
@@ -19,7 +19,7 @@ public class Insignea {
 	private String text;
 	
 	private int xp;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -51,6 +51,5 @@ public class Insignea {
 	public void setXp(int xp) {
 		this.xp = xp;
 	}
-	
 	
 }

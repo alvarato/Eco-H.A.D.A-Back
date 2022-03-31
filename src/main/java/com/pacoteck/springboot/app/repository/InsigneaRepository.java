@@ -1,5 +1,11 @@
 package com.pacoteck.springboot.app.repository;
 
-public class InsigneaRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.pacoteck.springboot.app.entity.Insignea;
+
+@Repository
+public interface InsigneaRepository extends JpaRepository<Insignea, Long>{
 
 }

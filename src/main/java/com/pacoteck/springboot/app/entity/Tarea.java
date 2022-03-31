@@ -1,9 +1,12 @@
 package com.pacoteck.springboot.app.entity;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,10 +19,11 @@ public class Tarea {
 	
 	private String img;
 	
+	@OneToOne
 	private Insignea insignea;
 	
 	private String text;
-
+	
 	public Long getId() {
 		return id;
 	}
