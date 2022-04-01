@@ -29,6 +29,7 @@ public class CursoController {
 		return cs.cursosbyProfesor(profesor);
 	}
 	
+	//crea un curso
 	@PostMapping(value = "/create")
 	public void create(@RequestBody Curso curso) {
 		cs.create(curso);
@@ -40,5 +41,8 @@ public class CursoController {
 		return cs.alumnosbyProfesor(curso);
 	}
 	
+	//asgina un curso a un alumno;
+	@PostMapping(value ="/asignar")
+	public Stro
 	
 }

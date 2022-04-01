@@ -1,7 +1,5 @@
 package com.pacoteck.springboot.app.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,8 +43,8 @@ public class AlumnoController {
 	}
 	
 	@GetMapping(path = "/find{id}")
-	public List<Alumno> listarAlumnos(@PathVariable("id") Long id){
-		return as.findAllByCurso(id);
+	public Alumno listarAlumnos(@PathVariable("id") Long id){
+		return as.porId(id);
 	}
 	
 	@PostMapping(value="/asignarInsignea")

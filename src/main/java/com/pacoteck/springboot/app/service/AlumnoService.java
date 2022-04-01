@@ -46,6 +46,17 @@ public class AlumnoService {
 		return ar.findByCurso(curso);
 	}
 	
+	public Alumno porId(Long id) {
+		List<Alumno> alumnos = ar.findAll();
+		Alumno alumnoAux = null;
+		for (Alumno alumno : alumnos) {
+			if(alumno.getId() == id) {
+				return alumnoAux = alumno;
+			}
+		}
+		return alumnoAux;
+	}
+	
 	public void asignarInsignea(Long insignea, Long id) {
 				List<Alumno> a = this.read();
 				List<Insignea> i = ir.findAll();
