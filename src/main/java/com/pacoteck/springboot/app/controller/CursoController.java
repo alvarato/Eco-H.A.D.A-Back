@@ -1,6 +1,5 @@
 package com.pacoteck.springboot.app.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +40,11 @@ public class CursoController {
 		return cs.alumnosbyProfesor(curso);
 	}
 	
-	//asgina un curso a un alumno;
-	@PostMapping(value ="/asignar")
-	public Stro
+	//asgina alumnos a un curso;
+	@PostMapping(path ="/asignar{curso}")
+	public String asignar(@RequestBody List<Alumno> alumnos, @PathVariable("curso") Long curso) {
+		return cs.asignar(alumnos, curso);
+	}
+	
 	
 }

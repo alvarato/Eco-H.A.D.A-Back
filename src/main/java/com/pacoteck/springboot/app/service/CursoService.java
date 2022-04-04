@@ -1,11 +1,9 @@
 package com.pacoteck.springboot.app.service;
 
-import java.util.List;
-import java.util.Optional;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.pacoteck.springboot.app.entity.Alumno;
 import com.pacoteck.springboot.app.entity.Curso;
 import com.pacoteck.springboot.app.repository.AlumnoRepository;
@@ -29,9 +27,6 @@ public class CursoService {
 	
 	public List<Curso> cursosbyProfesor(Long profesor){
 		List<Curso> cursos = cr.findByProfesor(profesor);
-		for (Curso curso : cursos) {
-			curso.setAlumnos(null);
-		}
 		return cursos;
 	}
 	
@@ -51,28 +46,7 @@ public class CursoService {
 		return alumnos;
 	}
 	
-	public void addAlumno(Long alumno, Long curso) {
-		List<Curso> cursos = cr.findAll();
-		List<Alumno> alumnos = ar.findAll();
-		Alumno alumnoAux = null;
-		Curso cursoAux = null;
-		for (Alumno alumno2 : alumnos) {
-			if(alumno2.getId() == alumno) {
-				alumnoAux = alumno2;
-				break;
-			}
-			alumnos = null;
-		}
-		for (Curso curso2 : cursos) {
-			if(curso2.getId() == curso) {
-				cursoAux = curso2;
-				alumnos = curso2.getAlumnos();
-				break;
-			}
-		}
-		alumnos.add(alumnoAux);
-		cr.save(cursoAux);
-	}
+
 	
 	public void deleteAlumno(Long alumno, Long curso){
 		List<Curso> cursos = cr.findAll();
@@ -97,4 +71,36 @@ public class CursoService {
 		cursoAux.setAlumnos(alumnos);
 		cr.save(cursoAux);
 	}
+	
+	public String asignar(List<Alumno> alumnos, Long curso) {
+		List<Curso> cursos = cr.findAll();
+		Curso cursoAux = null;
+		List<Alumno> alumnosAux = null;
+		try {
+			for (Curso curso2 : cursos) {
+				cursoAux = curso2;
+				alumnosAux = cursoAux.getAlumnos();
+				cr.save(cursoAux);
+				if(curso2.getId() == curso) {
+					for (Alumno alumno : alumnos) {
+						alumnosAux.add(alumno);
+					}
+					cursoAux.setAlumnos(alumnosAux);
+					
+				}
+			}
+
+			return "Alumnos asignados";
+		} catch (Exception e) {
+			// TODO: handle exception
+			return "Error al Asignar alumnos";
+		}
+	}
+
+
+
+
+
+
+
 }
