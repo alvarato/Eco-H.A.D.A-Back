@@ -1,6 +1,7 @@
 package com.pacoteck.springboot.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,8 @@ public class AlumnoController {
 	@Autowired
 	public AlumnoService as;
 	
+	//crea un alumno
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping()
 	public String create(@RequestBody Alumno alumno) {
 		try {
@@ -30,7 +33,8 @@ public class AlumnoController {
 		}
 
 	}
-	
+	//borra un alumno
+	@CrossOrigin(origins = "http://localhost:8080")
 	@GetMapping(path = "/delete{id}")
 	public String delete(@PathVariable("id") Long id) {
 		try {
@@ -41,12 +45,15 @@ public class AlumnoController {
 		}
 
 	}
-	
+	//busca un alumno
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@GetMapping(path = "/find{id}")
 	public Alumno listarAlumnos(@PathVariable("id") Long id){
 		return as.porId(id);
 	}
 	
+	//asigna insignea
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping(value="/asignarInsignea")
 	public String asignarInsignea(@RequestParam Long insignea,@RequestParam Long alumno) {
 		  
@@ -60,6 +67,8 @@ public class AlumnoController {
 		
 	}
 	
+	// asigna tarea
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping(value="/asignarTarea")
 	public String asignarTarea(@RequestParam Long tarea,@RequestParam Long alumno) {
 		  
@@ -73,7 +82,8 @@ public class AlumnoController {
 		
 	}
 	
-	
+	//inicia sesion
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping(value = "/iniciarSesion")
 	public Long iniciarSesion(@RequestParam String email, @RequestParam String password) {
 		Long id = as.validar(email, password);

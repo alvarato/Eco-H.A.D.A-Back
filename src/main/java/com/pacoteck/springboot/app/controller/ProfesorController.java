@@ -3,6 +3,7 @@ package com.pacoteck.springboot.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class ProfesorController {
 
 		@Autowired
 		public ProfesorService ps;
-		
+		@CrossOrigin(origins = "http://127.0.0.1:5500")
 		@PostMapping(value = "/create")
 		public String crear(@RequestBody Profesor profesor) {
 			try {
@@ -30,12 +31,12 @@ public class ProfesorController {
 			}
 			
 		}
-		
+		@CrossOrigin(origins = "http://127.0.0.1:5500")
 		@GetMapping(value = "/findall")
 		public List<Profesor> find() {
 			return ps.findAll();
 		}
-		
+		@CrossOrigin(origins = "http://127.0.0.1:5500")
 		@PostMapping(value = "/iniciarSesion")
 		public Long iniciarSesion(@RequestParam String email, @RequestParam String password) {
 			Long id = ps.validar(email, password);

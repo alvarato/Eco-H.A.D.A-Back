@@ -3,6 +3,7 @@ package com.pacoteck.springboot.app.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,24 +24,28 @@ public class CursoController {
 	
 	
 	//trae todos los cursos de un profesor
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@GetMapping(path = "/profesor{profesor}")
 	public List<Curso> cursosProfesor(@PathVariable("profesor") Long profesor){
 		return cs.cursosbyProfesor(profesor);
 	}
 	
 	//crea un curso
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping(value = "/create")
 	public void create(@RequestBody Curso curso) {
 		cs.create(curso);
 	}
 	
 	//trae todos los alumnos de un curso
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@GetMapping(path = "/alumno{curso}")
 	public List<Alumno> alumnosCurso(@PathVariable("curso") Long curso) {
 		return cs.alumnosbyProfesor(curso);
 	}
 	
 	//asgina alumnos a un curso;
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@PostMapping(path ="/asignar{curso}")
 	public String asignar(@RequestBody List<Alumno> alumnos, @PathVariable("curso") Long curso) {
 		return cs.asignar(alumnos, curso);
