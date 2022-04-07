@@ -34,7 +34,7 @@ public class AlumnoController {
 
 	}
 	//borra un alumno
-	@CrossOrigin(origins = "http://localhost:8080")
+	@CrossOrigin(origins = "http://127.0.0.1:5500")
 	@GetMapping(path = "/delete{id}")
 	public String delete(@PathVariable("id") Long id) {
 		try {

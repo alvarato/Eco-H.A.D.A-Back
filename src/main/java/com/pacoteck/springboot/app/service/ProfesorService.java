@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pacoteck.springboot.app.entity.Alumno;
 import com.pacoteck.springboot.app.entity.Profesor;
 import com.pacoteck.springboot.app.repository.ProfesorRepository;
 
@@ -34,6 +35,16 @@ public class ProfesorService {
 	}
 
 	
+	public Profesor porId(Long id) {
+		List<Profesor> profesores = pr.findAll();
+		Profesor alumnoAux = null;
+		for (Profesor alumno : profesores) {
+			if(alumno.getId() == id) {
+				return alumnoAux = alumno;
+			}
+		}
+		return alumnoAux;
+	}
 	
 	
 	

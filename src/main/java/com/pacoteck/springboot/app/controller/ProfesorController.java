@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,10 +33,11 @@ public class ProfesorController {
 			
 		}
 		@CrossOrigin(origins = "http://127.0.0.1:5500")
-		@GetMapping(value = "/findall")
-		public List<Profesor> find() {
-			return ps.findAll();
+		@GetMapping(path = "/find{id}")
+		public Profesor find(@PathVariable("id") Long id) {
+			return ps.porId(id);
 		}
+		
 		@CrossOrigin(origins = "http://127.0.0.1:5500")
 		@PostMapping(value = "/iniciarSesion")
 		public Long iniciarSesion(@RequestParam String email, @RequestParam String password) {
